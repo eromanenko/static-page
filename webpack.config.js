@@ -28,6 +28,15 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader?presets[]=es2015'
       },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            attrs: [':custom-src']
+          }
+        }
+      }
     ]
   },
   // plugins: [
