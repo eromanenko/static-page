@@ -1,5 +1,186 @@
-header {
-  h1 {
-    color: red;
+$maxWidth: 960px;
+$minTablet: 767px;
+
+@mixin media($size) {
+	@if $size == 'tabletUpwards' {@media screen and ( min-width : $minTablet ) { @content; }}
+}
+
+body {
+	position: relative;
+	background-color: #DDDDDD;
+	font-family: 'helvetica', sans-serif;
+	font-weight: lighter;
+	font-size: 14px;
+	color: #555;
+	margin: 0;
+	padding: 0;
+	min-width: 320px;
+}
+
+h1 {
+	text-transform: uppercase;
+	color: #333;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: $maxWidth;
+  margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #EEE;
+}
+
+.imgInpLabel {
+  position: absolute;
+  z-index: 1;
+  color: white;
+  &::before {
+    display: inline-block;
+    content: '+';
+    cursor: pointer;
+    padding: 3px;
+    border: 1px solid gray;
+    width: 17px;
+    height: 17px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 4px;
+  }
+  &--2 {
+    right: 0;
+  }
+  .imgInp {
+    display: none;
+  }
+}
+
+.compare-slider-wrapper {
+	position: relative;
+	width: 100%;
+	background-color: white;
+
+	.compare-slider {
+		position: relative;
+		width: 100%;
+		margin: 0;
+		box-sizing: border-box;
+		> img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+
+		.title {
+			display: none;
+			position: absolute;
+			width: 250px;
+			bottom: 20px;
+			right: 20px;
+			background-color: rgba(0, 0, 0, 0.4);
+			padding: 10px;
+			box-sizing: border-box;
+			color: #DDD;
+			text-align: right;
+			@include media('tabletUpwards') {
+				display: block;
+			}
+		}
+
+
+
+		.resize {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 50%;
+			overflow: hidden;
+			> img {
+				display: block;
+			}
+			.title {
+				right: auto;
+				left: 20px;
+				text-align: left;
+			}
+		}
+
+		.divider {
+			position: absolute;
+			width: 2px;
+			height: 100%;
+			background-color: rgba(256, 256, 256, 0.2);
+			left: 50%;
+			top: 0;
+			bottom: 0;
+			margin-left: -1px;
+			cursor: ew-resize;
+			&:before {
+				content: "";
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				left: -9px;
+				top: 50%;
+				margin-top: -10px;
+				background-color: white;
+				transform: rotate(45deg);
+				transition: all 0.1s ease-in-out;
+			}
+			&:after {
+				content: "";
+				position: absolute;
+				width: 12px;
+				height: 12px;
+				left: -5px;
+				top: 50%;
+				margin-top: -6px;
+				background-color: white;
+				transform: rotate(45deg);
+				transition: all 0.1s ease-in-out;
+			}
+			&.draggable{
+				&:before {
+					width: 30px;
+					height: 30px;
+					left: -14px;
+					margin-top: -15px;
+				}
+				&:after {
+					width: 20px;
+					height: 20px;
+					left: -9px;
+					margin-top: -10px;
+					background-color: #555;
+				}
+			}
+		}
+	}
+}
+
+.compare-zoom {
+  margin-top: 10px;
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: strech;
+  .imgBg {
+    flex-basis: 100%;
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+		@include media('tabletUpwards') {
+			flex-basis: 50%;
+      height: 100vh;
+		}
+    &--1 {
+      background-image: url(http://egegorgulu.com/assets/img/beforeafter/after.jpg);
+    }
+    &--2 {
+      background-image: url(http://egegorgulu.com/assets/img/beforeafter/before.jpg);
+    }
   }
 }
