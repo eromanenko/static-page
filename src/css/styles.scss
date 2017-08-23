@@ -1,10 +1,3 @@
-$maxWidth: 960px;
-$minTablet: 767px;
-
-@mixin media($size) {
-	@if $size == 'tabletUpwards' {@media screen and ( min-width : $minTablet ) { @content; }}
-}
-
 body {
 	position: relative;
 	background-color: #DDDDDD;
@@ -25,7 +18,7 @@ h1 {
 .container {
   position: relative;
   width: 100%;
-  max-width: $maxWidth;
+  max-width: 960px;
   margin: 0 auto;
   overflow: hidden;
   box-sizing: border-box;
@@ -73,7 +66,7 @@ h1 {
 		}
 
 		.title {
-			display: none;
+			display: block;
 			position: absolute;
 			width: 250px;
 			bottom: 20px;
@@ -83,9 +76,6 @@ h1 {
 			box-sizing: border-box;
 			color: #DDD;
 			text-align: right;
-			@include media('tabletUpwards') {
-				display: block;
-			}
 		}
 
 
@@ -172,15 +162,17 @@ h1 {
     height: 50vh;
     background-repeat: no-repeat;
     background-position: 0 0;
-		@include media('tabletUpwards') {
-			flex-basis: 50%;
-      height: 100vh;
-		}
     &--1 {
       background-image: url(http://egegorgulu.com/assets/img/beforeafter/after.jpg);
     }
     &--2 {
       background-image: url(http://egegorgulu.com/assets/img/beforeafter/before.jpg);
+    }
+  }
+  &.horizontal {
+    .imgBg {
+      flex-basis: 50%;
+      height: 100vh;
     }
   }
 }
