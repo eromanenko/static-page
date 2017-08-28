@@ -36,7 +36,18 @@ window.addEventListener("resize", function() {
   setOrientation();
 }, false);
 
-var images = {};
+var images = {
+  1: {
+    src: 'http://egegorgulu.com/assets/img/beforeafter/before.jpg',
+    width: 1200,
+    height: 675
+  },
+  2: {
+    src: 'http://egegorgulu.com/assets/img/beforeafter/after.jpg',
+    width: 1200,
+    height: 675
+  }
+};
 
 function setOrientation() {
   if (document.documentElement.clientWidth > document.documentElement.clientHeight) {
@@ -164,7 +175,7 @@ function moves(frame, frames) {
     bgPositionX = parseFloat(getComputedStyle(frame).backgroundPositionX);
     bgPositionY = parseFloat(getComputedStyle(frame).backgroundPositionY);
     $(window).on("mousemove.drag touchmove.drag", function(e) {
-      console.log(trottling);
+      // console.log(trottling);
       if ( !touched ) {
         e.preventDefault();
       }
